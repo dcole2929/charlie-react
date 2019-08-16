@@ -1,0 +1,53 @@
+{
+    "extends": ["airbnb"],
+    "plugins": ["jsx-control-statements"],
+    "rules": {
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx"]
+            }
+        ],
+        "react/prop-types": 0,
+        "no-underscore-dangle": 0,
+        "import/imports-first": ["error", "absolute-first"],
+        "import/newline-after-import": "error",
+        "react/jsx-no-undef": ["error", { "allowGlobals": true }],
+        "jsx-control-statements/jsx-jcs-no-undef": "error",
+        "jsx-control-statements/jsx-use-if-tag": "error",
+        "jsx-control-statements/jsx-otherwise-once-last": "error",
+        "jsx-control-statements/jsx-if-require-condition": "error",
+        "jsx-control-statements/jsx-when-require-condition": "error",
+        "no-restricted-syntax": ["error", {
+            "selector": "JSXOpeningElement[name.name=For]",
+            "message": "No JSX For tags"
+        }, {
+            "selector": "JSXOpeningElement[name.name=With]",
+            "message": "No JSX With tags"
+        }]
+    },
+    "globals": {
+        "window": true,
+        "document": true,
+        "localStorage": true,
+        "FormData": true,
+        "FileReader": true,
+        "Blob": true,
+        "navigator": true
+    },
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "webpack.config.js"
+            },
+            "node": {
+                "extensions": [".js", ".jsx"]
+            }
+        }
+    }
+}
