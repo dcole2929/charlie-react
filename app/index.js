@@ -1,13 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-
-// class App extends React.Component {
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import { ActionCableProvider } from 'react-actioncable-provider';
+import KioskSetup from './kiosk-setup';
+import Kiosk from './kiosk';
+import './styles/index.css';
+import { API_WS_ROOT } from './constants/index';
 
 function App() {
   return (
-    <div>Hello World</div>
+    <Router>
+      <Switch>
+        <Route path="/">
+          <KioskSetup />
+        </Route>
+        <Route path="/kiosk">
+          <Kiosk />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </Router>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <ActionCableProvider url={API_WS_ROOT}>
+    <App />
+  </ActionCableProvider>, document.getElementById('root'),
+);
